@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --color-fordrax-black: #0B0F14;
+  --color-fordrax-panel: #151921;
+  --color-fordrax-blue: #0057FF;
+  --color-fordrax-cyan: #00E5FF;
+  --color-fordrax-titanium: #64748B;
+  --color-fordrax-danger: #FF3333;
+
+  --shadow-glow-blue: 0 0 20px -5px rgba(0, 87, 255, 0.5);
+  --shadow-glow-cyan: 0 0 20px -5px rgba(0, 229, 255, 0.5);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+/* Base Styles */
+body {
+  background-color: var(--color-fordrax-black);
+  color: white;
+  background-image: radial-gradient(circle at 50% 0%, #151921 0%, #0B0F14 100%);
+  min-height: 100vh;
+}
+
+/* Component Utilities */
+@utility fordrax-panel {
+  @apply bg-fordrax-panel border border-white/10 rounded-xl backdrop-blur-md;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+@utility fordrax-glow-text {
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+@utility fordrax-card-hover {
+  @apply transition-all duration-300 hover:border-fordrax-cyan/50 hover:shadow-glow-cyan;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d3748;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a5568;
+}
