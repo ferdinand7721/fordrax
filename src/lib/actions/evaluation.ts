@@ -59,6 +59,14 @@ export async function submitEvaluation({ maxScore = 100, moduleId, answers }: Su
         return { success: false, error: "Failed to load exam key." };
     }
 
+    // Fetch Module Details (for email agent)
+    const { data: moduleData } = await supabase
+        .from("modules")
+        .select("title")
+        .eq("id", moduleId)
+        .single();
+
+
     // 3. Calculate Score
     let correctCount = 0;
     const totalQuestions = questions.length;
@@ -170,7 +178,7 @@ export async function submitEvaluation({ maxScore = 100, moduleId, answers }: Su
                             email: user.email, // Assuming we have it in the session or profile
                             name: user.user_metadata?.full_name || "User",
                             certificate_id: certificateId,
-                            module_title: module.title || "Module"
+                            module_title: moduleData?.title || "Module"
                         }
                     });
 

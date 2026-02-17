@@ -6,7 +6,11 @@ import { useRouter } from "next/navigation";
 import { LogOut, User, Bell } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export function Topbar() {
+interface TopbarProps {
+    title?: string;
+}
+
+export function Topbar({ title }: TopbarProps) {
     const { user, loading } = useUser();
     const router = useRouter();
     const supabase = createClient();
@@ -19,9 +23,13 @@ export function Topbar() {
 
     return (
         <div className="h-16 bg-fordrax-black/80 backdrop-blur-md border-b border-white/5 fixed top-0 right-0 left-64 z-40 flex items-center justify-between px-8">
-            {/* Breadcrumbs or Title could go here */}
+            {/* Breadcrumbs or Title */}
             <div className="text-sm text-fordrax-titanium hidden md:block">
-                Console &gt; Dashboard
+                {title ? (
+                    <span className="text-white font-medium">{title}</span>
+                ) : (
+                    "Console > Dashboard"
+                )}
             </div>
 
             <div className="flex items-center gap-6">
