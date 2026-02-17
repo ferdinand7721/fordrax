@@ -54,9 +54,13 @@ export default async function LibraryPage() {
                                             <Clock className="w-3 h-3" /> {module.estimated_minutes} min
                                         </span>
                                         {module.visibility === 'global_template' ? (
-                                            <Globe className="w-4 h-4 text-fordrax-cyan" title="Global Template" />
+                                            <span title="Global Template">
+                                                <Globe className="w-4 h-4 text-fordrax-cyan" />
+                                            </span>
                                         ) : (
-                                            <Lock className="w-4 h-4 text-fordrax-titanium" title="Org Only" />
+                                            <span title="Org Only">
+                                                <Lock className="w-4 h-4 text-fordrax-titanium" />
+                                            </span>
                                         )}
                                     </div>
 

@@ -20,7 +20,8 @@ export default async function OrgPage() {
         .eq("user_id", user.id)
         .single();
 
-    const org = member?.orgs;
+    const orgData = member?.orgs;
+    const org = Array.isArray(orgData) ? orgData[0] : orgData;
 
     return (
         <div className="flex min-h-screen bg-fordrax-black text-white selection:bg-fordrax-cyan/30">
